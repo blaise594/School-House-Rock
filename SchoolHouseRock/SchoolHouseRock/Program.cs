@@ -13,13 +13,35 @@ namespace SchoolHouseRock
         {
             const string connectionString =
                 @"Server=localhost\SQLEXPRESS;Database=DotNetUniversity;Trusted_Connection=True;";
-
+            
             using (var connection = new SqlConnection(connectionString))
             {
-                connection.Open();
                 Console.WriteLine("Connected");
-                connection.Close();
+                SeeAllCourses(connection);
+               
             }
+        }  
+
+        public static void SeeAllCourses(SqlConnection connection)
+        {
+            var allcourses = new List<Course>();
+            var MyCommand = new SqlCommand(@"SELECT * FROM Course JOIN Instructors ON Course.InstructorId = Instructors.Id", connection);
+            connection.Open();
+
+            var reader = MyCommand.ExecuteReader();
+
+            while (reader.Read())
+            {
+                var coursecontainer = new Course(reader);
+                allcourses.Add(coursecontainer);
+            }
+            foreach(var eachclass in allcourses)
+            {
+                Console.WriteLine(eachclass.Title);
+            }
+           
+            connection.Close();
         }
+
     }
 }

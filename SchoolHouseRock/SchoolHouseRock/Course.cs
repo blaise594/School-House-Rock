@@ -20,8 +20,8 @@ namespace SchoolHouseRock
 
         public int Id { get; private set; }
         public string Title { get; private set; }
-        public int InstructorId { get; private set; }
-        public int CourseNumber { get; private set; }
-        public int DepartmentId { get; private set; }
+        public int InstructorId { get; set; }
+        public int CourseNumber { get; set; }
+        public int DepartmentId { get; set; }
     }
 }

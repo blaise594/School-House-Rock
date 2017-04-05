@@ -17,9 +17,9 @@ namespace SchoolHouseRock
             this.DeptCode = (int)reader["DeptCode"];
         }
 
-        public int Id { get; private set; }
-        public string Name { get; private set; }
-        public int HeadInstructorId { get; private set; }
-        public int DeptCode { get; private set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int HeadInstructorId { get; set; }
+        public int DeptCode { get; set; }
     }
 }
